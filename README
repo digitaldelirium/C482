@@ -1,0 +1,90 @@
+Programming Exercise One: Creating an Abstract Superclass and Concrete Subclass
+ 
+The following exercise will test your knowledge of public, default, final, and abstract classes. Create an abstract superclass named Fruit and a concrete subclass named Apple. The superclass should belong to a package called food and the subclass can belong to the default package (meaning it isn't put into a package explicitly). Make the superclass public and give the subclass default access.
+1. Create the superclass as follows:
+2. 
+3.   package food;
+  public abstract class Fruit{ /* any code you want */}
+1. Create the subclass in a separate file as follows:
+2. 
+3.   import food.Fruit;
+  class Apple extends Fruit{ /* any code you want */}
+1. Create a directory called food off the directory in your class path setting.
+2. Attempt to compile the two files. If you want to use the Apple class, make sure you place the Fruit.class file in the food subdirectory.
+
+
+Programming Exercise Two: Casting Primitives
+ 
+Create a float number type of any value, and assign it to a short using casting.
+1. Declare a float variable: float f = 234.56F;
+2. Assign the float to a short: short s = (short)f;
+
+
+Programming Exercise Three: Garbage Collection Experiment
+ 
+1.  import java.util.Date;
+2.  public class CheckGC {
+3.     public static void main(String [] args) {
+4.        Runtime rt = Runtime.getRuntime();
+5.        System.out.println("Total JVM memory: "
+                             + rt.totalMemory());
+6.        System.out.println("Before Memory = "
+                             + rt.freeMemory());
+7.        Date d = null;
+8.        for(int i = 0;i<10000;i++) {
+9.           d = new Date();
+10.           d = null;
+11.        }
+12.        System.out.println("After Memory = "
+                             + rt.freeMemory());
+13.        rt.gc();   // an alternate to System.gc()
+14.        System.out.println("After GC Memory = "
+                             + rt.freeMemory());
+15.     }
+16.  }
+Now, let's run the program and check the results:
+Total JVM memory: 1048568
+Before Memory = 703008
+After Memory = 458048
+After GC Memory = 818272
+As we can see, the JVM actually did decide to garbage collect (i.e., delete) the eligible objects. In the preceding example, we suggested to the JVM to perform garbage collection with 458,048 bytes of memory remaining, and it honored our request. This program has only one user thread running, so there was nothing else going on when we called rt.gc(). Keep in mind that the behavior when gc() is called may be different for different JVMs, so there is no guarantee that the unused objects will be removed from memory. About the only thing you can guarantee is that if you are running very low on memory, the garbage collector will run before it throws an OutOfMemoryException.
+Try changing the CheckGC program by putting lines 13 and 14 inside a loop. You might see that not all memory is released on any given run of the GC.
+ 
+
+Programming Exercise Four: Creating a switch-case Statement
+ 
+Try creating a switch statement using a char value as the case. Include a default behavior if none of the char values match.
+• Make sure a char variable is declared before the switch statement.
+• Each case statement should be followed by a break.
+• The default case can be located at the end, middle, or top.
+
+Programming Exercise Five: Creating a Labeled while Loop
+ 
+Try creating a labeled while loop. Make the label outer and provide a condition to check whether a variable age is less than or equal to 21. Within the loop, increment age by one. Every time the program goes through the loop, check whether age is 16. If it is, print the message "get your driver's license" and continue to the outer loop. If not, print "Another year."
+• The outer label should appear just before the while loop begins.
+• Make sure age is declared outside of the while loop.
+ 
+
+Programming Exercise Six: Propagating and Catching an Exception
+ 
+In this exercise you're going to create two methods that deal with exceptions. One of the methods is the main() method, which will call another method. If an exception is thrown in the other method, main() must deal with it. A finally statement will be included to indicate that the program has completed. The method that main() will call will be named reverse, and it will reverse the order of the characters in a String. If the String contains no characters, reverse will propagate an exception up to the main() method.
+• Create a class called Propagate and a main() method, which will remain empty for now.
+• Create a method called reverse. It takes an argument of a String and returns a String.
+• In reverse, check if the String has a length of 0 by using the String.length() method. If the length is 0, the reverse method will throw an exception.
+• Now include the code to reverse the order of the String. Because this isn't the main topic of this chapter, the reversal code has been provided, but feel free to try it on your own.
+• 
+•  String reverseStr = "";
+•  for(int i=s.length()-1;i>=0;--i) {
+•    reverseStr += s.charAt(i);
+•  }
+ return reverseStr;
+• Now in the main() method you will attempt to call this method and deal with any potential exceptions. Additionally, you will include a finally statement that displays when main() has finished.
+
+Programming Exercise Seven: Creating an Exception
+ 
+In this exercise we attempt to create a custom exception. We won't put in any new methods (it will have only those inherited from Exception), and because it extends Exception, the compiler considers it a checked exception. The goal of the program is to determine whether a command-line argument, representing a particular food (as a string), is considered bad or OK.
+• Let's first create our exception. We will call it BadFoodException. This exception will be thrown when a bad food is encountered.
+• Create an enclosing class called MyException and a main() method, which will remain empty for now.
+• Create a method called checkFood(). It takes a String argument and throws our exception if it doesn't like the food it was given. Otherwise, it tells us it likes the food. You can add any foods you aren't particularly fond of to the list.
+• Now in the main() method, you'll get the command-line argument out of the String array, and then pass that String on to the checkFood() method. Because it's a checked exception, the checkFood() method must declare it, and the main() method must handle it (using a try/catch). Do not have main() declare the exception, because if main() ducks the exception, who else is back there to catch it?
+• As nifty as exception handling is, it's still up to the developer to make proper use of it. Exception handling makes organizing our code and signaling problems easy, but the exception handlers still have to be written. You'll find that even the most complex situations can be handled, and your code will be reusable, readable, and maintainable.
