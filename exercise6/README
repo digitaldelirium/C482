@@ -1,0 +1,14 @@
+Programming Exercise Six: Propagating and Catching an Exception
+ 
+In this exercise you're going to create two methods that deal with exceptions. One of the methods is the main() method, which will call another method. If an exception is thrown in the other method, main() must deal with it. A finally statement will be included to indicate that the program has completed. The method that main() will call will be named reverse, and it will reverse the order of the characters in a String. If the String contains no characters, reverse will propagate an exception up to the main() method.
+• Create a class called Propagate and a main() method, which will remain empty for now.
+• Create a method called reverse. It takes an argument of a String and returns a String.
+• In reverse, check if the String has a length of 0 by using the String.length() method. If the length is 0, the reverse method will throw an exception.
+• Now include the code to reverse the order of the String. Because this isn't the main topic of this chapter, the reversal code has been provided, but feel free to try it on your own.
+• 
+•  String reverseStr = "";
+•  for(int i=s.length()-1;i>=0;--i) {
+•    reverseStr += s.charAt(i);
+•  }
+ return reverseStr;
+• Now in the main() method you will attempt to call this method and deal with any potential exceptions. Additionally, you will include a finally statement that displays when main() has finished.

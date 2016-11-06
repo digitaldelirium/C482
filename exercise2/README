@@ -1,0 +1,5 @@
+Programming Exercise Two: Casting Primitives
+ 
+Create a float number type of any value, and assign it to a short using casting.
+1. Declare a float variable: float f = 234.56F;
+2. Assign the float to a short: short s = (short)f;

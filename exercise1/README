@@ -1,0 +1,13 @@
+Programming Exercise One: Creating an Abstract Superclass and Concrete Subclass
+ 
+The following exercise will test your knowledge of public, default, final, and abstract classes. Create an abstract superclass named Fruit and a concrete subclass named Apple. The superclass should belong to a package called food and the subclass can belong to the default package (meaning it isn't put into a package explicitly). Make the superclass public and give the subclass default access.
+1. Create the superclass as follows:
+2. 
+3.   package food;
+  public abstract class Fruit{ /* any code you want */}
+1. Create the subclass in a separate file as follows:
+2. 
+3.   import food.Fruit;
+  class Apple extends Fruit{ /* any code you want */}
+1. Create a directory called food off the directory in your class path setting.
+2. Attempt to compile the two files. If you want to use the Apple class, make sure you place the Fruit.class file in the food subdirectory.

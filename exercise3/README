@@ -1,0 +1,29 @@
+Programming Exercise Three: Garbage Collection Experiment
+ 
+1.  import java.util.Date;
+2.  public class CheckGC {
+3.     public static void main(String [] args) {
+4.        Runtime rt = Runtime.getRuntime();
+5.        System.out.println("Total JVM memory: "
+                             + rt.totalMemory());
+6.        System.out.println("Before Memory = "
+                             + rt.freeMemory());
+7.        Date d = null;
+8.        for(int i = 0;i<10000;i++) {
+9.           d = new Date();
+10.           d = null;
+11.        }
+12.        System.out.println("After Memory = "
+                             + rt.freeMemory());
+13.        rt.gc();   // an alternate to System.gc()
+14.        System.out.println("After GC Memory = "
+                             + rt.freeMemory());
+15.     }
+16.  }
+Now, let's run the program and check the results:
+Total JVM memory: 1048568
+Before Memory = 703008
+After Memory = 458048
+After GC Memory = 818272
+As we can see, the JVM actually did decide to garbage collect (i.e., delete) the eligible objects. In the preceding example, we suggested to the JVM to perform garbage collection with 458,048 bytes of memory remaining, and it honored our request. This program has only one user thread running, so there was nothing else going on when we called rt.gc(). Keep in mind that the behavior when gc() is called may be different for different JVMs, so there is no guarantee that the unused objects will be removed from memory. About the only thing you can guarantee is that if you are running very low on memory, the garbage collector will run before it throws an OutOfMemoryException.
+Try changing the CheckGC program by putting lines 13 and 14 inside a loop. You might see that not all memory is released on any given run of the GC.

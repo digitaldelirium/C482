@@ -1,0 +1,6 @@
+Programming Exercise Four: Creating a switch-case Statement
+ 
+Try creating a switch statement using a char value as the case. Include a default behavior if none of the char values match.
+• Make sure a char variable is declared before the switch statement.
+• Each case statement should be followed by a break.
+• The default case can be located at the end, middle, or top.

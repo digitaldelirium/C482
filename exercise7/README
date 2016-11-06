@@ -1,0 +1,8 @@
+Programming Exercise Seven: Creating an Exception
+ 
+In this exercise we attempt to create a custom exception. We won't put in any new methods (it will have only those inherited from Exception), and because it extends Exception, the compiler considers it a checked exception. The goal of the program is to determine whether a command-line argument, representing a particular food (as a string), is considered bad or OK.
+• Let's first create our exception. We will call it BadFoodException. This exception will be thrown when a bad food is encountered.
+• Create an enclosing class called MyException and a main() method, which will remain empty for now.
+• Create a method called checkFood(). It takes a String argument and throws our exception if it doesn't like the food it was given. Otherwise, it tells us it likes the food. You can add any foods you aren't particularly fond of to the list.
+• Now in the main() method, you'll get the command-line argument out of the String array, and then pass that String on to the checkFood() method. Because it's a checked exception, the checkFood() method must declare it, and the main() method must handle it (using a try/catch). Do not have main() declare the exception, because if main() ducks the exception, who else is back there to catch it?
+• As nifty as exception handling is, it's still up to the developer to make proper use of it. Exception handling makes organizing our code and signaling problems easy, but the exception handlers still have to be written. You'll find that even the most complex situations can be handled, and your code will be reusable, readable, and maintainable.
